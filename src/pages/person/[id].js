@@ -1,22 +1,9 @@
 import { useRouter } from "next/router";
 
 export async function getStaticPaths() {
-  //     const fetcher = (url: string) =>
-  //     axios
-  //       .get(url, {
-  //         headers: {
-  //           Authorization:
-  //             "api-key 14:2023-04-05:henrik.cheng@1337.tech 1818628c1a0136bfe3d4f2146c9789fe008bc3d7dfbe7d4b923c6eac5d63c024",
-  //         },
-  //       })
-  //       .then((res) => res.data);
-
-  //   const { data } = useSWR("https://api.1337co.de/v3/employees", fetcher);
-
   const res = await fetch("https://api.1337co.de/v3/employees", {
     headers: {
-      Authorization:
-        "api-key 14:2023-04-05:henrik.cheng@1337.tech 1818628c1a0136bfe3d4f2146c9789fe008bc3d7dfbe7d4b923c6eac5d63c024",
+      Authorization: process.env.customKey || "",
     },
   });
   const people = await res.json();
@@ -35,8 +22,7 @@ export async function getStaticProps({ params }) {
     `https://api.1337co.de/v3/employees?email=${id}@1337.tech`,
     {
       headers: {
-        Authorization:
-          "api-key 14:2023-04-05:henrik.cheng@1337.tech 1818628c1a0136bfe3d4f2146c9789fe008bc3d7dfbe7d4b923c6eac5d63c024",
+        Authorization: process.env.customKey || "",
       },
     }
   );
@@ -46,7 +32,8 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Person({ people }) {
-  console.log("🚀 ~ file: [id].js:45 ~ Person ~ people:", people);
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+  console.log("🚀 ~ file: [id].js:22 ~ getStaticProps ~ apiKey:", apiKey);
   return (
     <div className="bg-gray-800 h-screen p-16 text-gray-100">
       <div className="text-center font-bold text-3xl">{people.name}</div>

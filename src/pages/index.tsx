@@ -25,11 +25,10 @@ type Person = {
 };
 
 //Server side rendering
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const res = await fetch(`https://api.1337co.de/v3/employees`, {
     headers: {
-      Authorization:
-        "api-key 14:2023-04-05:henrik.cheng@1337.tech 1818628c1a0136bfe3d4f2146c9789fe008bc3d7dfbe7d4b923c6eac5d63c024",
+      Authorization: process.env.customKey || "",
     },
   });
   const data = await res.json();
@@ -54,8 +53,9 @@ export default function Home({ data }: { data: Person[] }) {
 
   // if (!data) return <div>loading...</div>;
 
-  console.log("🚀 ~ file: index.tsx:52 ~ Home ~ data:", data);
   // SSR = getservicesideprops
+  const apiKey = process.env.API_KEY;
+  console.log("🚀 ~ file: index.tsx:60 ~ Home ~ apiKey:", apiKey);
 
   return (
     <main>
