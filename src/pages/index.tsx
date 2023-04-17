@@ -24,13 +24,15 @@ export default function Home() {
         {data.map((person: any) => (
           <li key={person.name} className="m-4">
             <a href="www.google.se">
-              <Image
-                priority
-                src={person.imagePortraitUrl || "/images/profile.jpeg"}
-                height={256}
-                width={256}
-                alt={`portrait of ${person.name}`}
-              />
+              {person.imagePortraitUrl && (
+                <Image
+                  priority
+                  src={person.imagePortraitUrl || "/images/profile.jpeg"}
+                  height={256}
+                  width={256}
+                  alt={`portrait of ${person.name}`}
+                />
+              )}
               {person.name}
             </a>
           </li>
