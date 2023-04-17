@@ -1,5 +1,3 @@
-// pages/post/[id].js 
-
 import { getPostDetails, getPostIdList } from '../../../lib/posts';
 
 export async function getStaticPaths() {
