@@ -32,8 +32,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Person({ people }) {
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-  console.log("🚀 ~ file: [id].js:22 ~ getStaticProps ~ apiKey:", apiKey);
   return (
     <div className="bg-gray-800 h-screen p-16 text-gray-100">
       <div className="text-center font-bold text-3xl">{people.name}</div>
