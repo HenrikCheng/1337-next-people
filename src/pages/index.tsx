@@ -54,8 +54,6 @@ export default function Home({ data }: { data: Person[] }) {
   // if (!data) return <div>loading...</div>;
 
   // SSR = getservicesideprops
-  const apiKey = process.env.API_KEY;
-  console.log("🚀 ~ file: index.tsx:60 ~ Home ~ apiKey:", apiKey);
 
   return (
     <main>

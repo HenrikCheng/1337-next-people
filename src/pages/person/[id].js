@@ -18,6 +18,7 @@ export async function getStaticPaths() {
 // SSG - static site generation
 export async function getStaticProps({ params }) {
   const { id } = params;
+  console.log("🚀 ~ file: [id].js:21 ~ getStaticProps ~ id:", id)
   const res = await fetch(
     `https://api.1337co.de/v3/employees?email=${id}@1337.tech`,
     {
