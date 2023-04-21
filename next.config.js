@@ -2,7 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   env: {
-    customKey: 'api-key 14:2023-04-05:henrik.cheng@1337.tech 1818628c1a0136bfe3d4f2146c9789fe008bc3d7dfbe7d4b923c6eac5d63c024',
+    customKey:
+      "api-key 14:2023-04-21:henrik.cheng@1337.tech 100958dea4700eb7ff48d70ed312bcd1f530ad2d29c7bdae9c69c0621115f8ae",
   },
   images: {
     remotePatterns: [
