@@ -59,8 +59,11 @@ export default function Home({ data }: { data: Person[] }) {
       <h1>Fellowship of the 1337</h1>
       <ul className="flex flex-row flex-wrap">
         {data.map((person) => (
-          <li key={person.name} className="m-4">
-            <Link href={`/person/${person.email.replace(/@.*$/, "")}`}>
+          <li
+            key={person.name}
+            className="m-4 transition ease-in-out hover:-translate-y-1 hover:scale-105 duration-150"
+          >
+            <Link className="flex flex-col justify-between h-full" href={`/person/${person.email.replace(/@.*$/, "")}`}>
               {person.imagePortraitUrl && (
                 <Image
                   priority
@@ -68,9 +71,10 @@ export default function Home({ data }: { data: Person[] }) {
                   height={256}
                   width={256}
                   alt={`portrait of ${person.name}`}
+                  className="grow object-cover"
                 />
               )}
-              {person.name}
+              <div>{person.name}</div>
             </Link>
           </li>
         ))}
