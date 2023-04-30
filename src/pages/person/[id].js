@@ -1,4 +1,6 @@
 import { useRouter } from "next/router";
+import Link from "next/link";
+import Image from "next/image";
 
 export async function getStaticPaths() {
   const res = await fetch("https://api.1337co.de/v3/employees", {
@@ -32,11 +34,27 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Person({ people }) {
+  const src = `${people.imageWallOfLeetUrl}`;
+  const htmlContent = people.mainText;
   return (
-    <div className="bg-gray-800 h-screen p-16 text-gray-100">
-      <div className="text-center font-bold text-3xl">{people.name}</div>
-      <div className="text-justify my08 text-gray-200">{people.name}</div>
-      <div className="text-gray-400">{people.name}</div>
+    <div className="bg-gray-800 h-screen p-16 text-gray-100 relative">
+      <Image
+        priority
+        src={src || people.imagePortraitUrl || "/images/profile.jpeg"}
+        fill
+        alt={`portrait of ${people.name}`}
+        className="object-cover brightness-50"
+      />
+      <div className="absolute z-10 text-white">
+        <div className="text-center font-bold text-3xl">{people.name}</div>
+        <div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+        <Link
+          className=""
+          href="/"
+        >
+          Go back
+        </Link>
+      </div>
     </div>
   );
 }

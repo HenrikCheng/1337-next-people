@@ -38,6 +38,7 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ data }: { data: Person[] }) {
+  console.log("🚀 ~ file: index.tsx:41 ~ Home ~ data:", data);
   // Client side rendering
   // const fetcher = (url: string) =>
   //   axios
@@ -63,7 +64,10 @@ export default function Home({ data }: { data: Person[] }) {
             key={person.name}
             className="m-4 transition ease-in-out hover:-translate-y-1 hover:scale-105 duration-150"
           >
-            <Link className="flex flex-col justify-between h-full" href={`/person/${person.email.replace(/@.*$/, "")}`}>
+            <Link
+              className="flex flex-col justify-between h-full"
+              href={`/person/${person.email.replace(/@.*$/, "")}`}
+            >
               {person.imagePortraitUrl && (
                 <Image
                   priority
@@ -74,7 +78,8 @@ export default function Home({ data }: { data: Person[] }) {
                   className="grow object-cover"
                 />
               )}
-              <div>{person.name}</div>
+              {person.name}
+
             </Link>
           </li>
         ))}
